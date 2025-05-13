@@ -129,3 +129,7 @@ CREATE TRIGGER update_property_timestamp
 BEFORE UPDATE ON "Property"
 FOR EACH ROW
 EXECUTE FUNCTION update_timestamp();
+
+
+ALTER TABLE "Booking"
+ADD COLUMN total_price DECIMAL NOT NULL;
