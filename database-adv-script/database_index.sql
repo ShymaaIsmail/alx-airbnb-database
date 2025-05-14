@@ -48,3 +48,11 @@ CREATE INDEX IF NOT EXISTS idx_property_created_at ON "Property" (created_at);
 
 -- Composite index for filtering by price and number of guests
 CREATE INDEX IF NOT EXISTS idx_property_price_guests ON "Property" (pricepernight, number_of_guests);
+----------------------------------------------------------------------------------------------------------------------------
+--Queries to measure performance
+
+EXPLAIN ANALYZE SELECT * FROM "Booking";
+
+EXPLAIN ANALYZE SELECT * FROM "User";
+
+EXPLAIN ANALYZE SELECT * FROM "Property";
