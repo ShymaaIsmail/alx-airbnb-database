@@ -17,10 +17,11 @@ Use SQL aggregation and window functions to analyze data.
 2. **Window Functions:**  
    - Use a window function (`ROW_NUMBER`, `RANK`) to rank properties based on the total number of bookings they have received.
   ```sql
-    SELECT P.property_id, COUNT(B.*) AS "total_bookings", RANK () OVER (
+    SELECT P.property_id, COUNT(B.*) AS "total_bookings",
+	ROW_NUMBER() OVER (ORDER BY COUNT(B.booking_id) DESC) AS row_number,
+	RANK () OVER (
 		ORDER BY  COUNT(B.*) DESC
-	) rank_number,
-	ROW_NUMBER() OVER (ORDER BY COUNT(B.booking_id) DESC) AS row_number
+	) rank_number
     FROM public."Booking" AS B
     INNER JOIN public."Property" AS P
     ON B.property_id = P.property_id
