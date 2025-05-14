@@ -17,6 +17,8 @@
       INNER JOIN
       public."Payment" AS PY
       on B.booking_id = PY.booking_id
+      WHERE U.role = 'guest' and PY.payment_method = 'credit_card'
+
 
 2. **Analyze Query Performance:**
    - Use the `EXPLAIN` statement to assess the query's execution plan.
@@ -61,5 +63,7 @@
     FROM public."Booking" AS B
     INNER JOIN public."User" AS U ON B.user_id = U.user_id
     INNER JOIN public."Property" AS P ON B.property_id = P.property_id
-    INNER JOIN public."Payment" AS PY ON B.booking_id = PY.booking_id;
+    INNER JOIN public."Payment" AS PY ON B.booking_id = PY.booking_id
+   WHERE U.role = 'guest' and PY.payment_method = 'credit_card';
+
     
