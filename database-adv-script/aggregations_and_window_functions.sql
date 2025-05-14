@@ -20,7 +20,7 @@ Use SQL aggregation and window functions to analyze data.
     SELECT P.property_id, COUNT(B.*) AS "total_bookings",
 	ROW_NUMBER() OVER (ORDER BY COUNT(B.booking_id) DESC) AS row_number,
 	RANK () OVER (
-		ORDER BY  COUNT(B.*) DESC
+		ORDER BY  COUNT(B.booking_id) DESC
 	) rank_number
     FROM public."Booking" AS B
     INNER JOIN public."Property" AS P
